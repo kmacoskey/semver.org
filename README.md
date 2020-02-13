@@ -32,3 +32,16 @@ If you have [docker-compose](https://docs.docker.com/compose/) installed:
    docker-compose up
    ```
 2. Open http://localhost:4000.
+
+## Deploying to Pivotal Web Services
+
+1. Install the CF CLI
+2. Authenticate with run.pivotal.io
+   ```
+   cf login -a "https://api.run.pivotal.io" -o "Data R&D" -s "gp-releng"
+   ```
+3. CF Push the application
+   ```
+   cf push SemiSemver -c "bundle exec jekyll serve --port 8080 --host 0.0.0.0" -b ruby_buildpack
+   ```
+4. Open https://semisemver.cfapps.io/
